@@ -88,4 +88,5 @@
     <string name="currentVersion">現在のバージョン:</string>
     <string name="newVersion">新しいバージョン:</string>
     <string name="not_available">利用できません</string>
+    <string name="grant_confirm_question" msgid="4690289297029223742">"次の権限を許可してもよろしいですか？許可すると、次にアクセスされます:"</string>
 </resources>
