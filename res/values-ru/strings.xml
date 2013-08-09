@@ -83,6 +83,5 @@
     <string name="currentVersion">Текущая версия:</string>
     <string name="newVersion">Новая версия:</string>
     <string name="not_available">недоступно</string>
-    <string name="no_new_perms" msgid="6657813692169565975">"Установка этого обновления не требует новых разрешений."</string>
     <string name="grant_confirm_question" msgid="4690289297029223742">"Предоставить следующие разрешения? Вот к чему будет получен доступ:"</string>
 </resources>
