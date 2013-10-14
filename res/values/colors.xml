@@ -19,5 +19,6 @@
     <color name="transparent">#00000000</color>
     <color name="semi_transparent">#60000000</color>
     <color name="app_background">#ff000000</color>
+    <color name="app_background_light">#fff4f4f4</color>
 </resources>
 

@@ -40,6 +40,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -260,11 +261,17 @@ public class InstallAppProgress extends Activity implements View.OnClickListener
         }
         mLabel = as.label;
         PackageUtil.initSnippetForNewApp(this, as, R.id.app_snippet);
+        RelativeLayout mainPanel = (RelativeLayout)findViewById(R.id.main);
         mStatusTextView = (TextView)findViewById(R.id.center_text);
         mStatusTextView.setText(R.string.installing);
         mExplanationTextView = (TextView) findViewById(R.id.center_explanation);
         mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
         mProgressBar.setIndeterminate(true);
+        
+        if (mStatusTextView.getTextColors().getDefaultColor() < (getResources().getColor(
+                R.color.app_background) / 2)) {
+            mainPanel.setBackgroundResource(R.color.app_background_light);
+        }
         // Hide button till progress is being displayed
         mOkPanel = (View)findViewById(R.id.buttons_panel);
         mDoneButton = (Button)findViewById(R.id.done_button);

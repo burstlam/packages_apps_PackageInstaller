@@ -15,98 +15,108 @@
 -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    	android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/app_background"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        style="@style/QuickModeWindowLand">
 
-    <!-- Button bar with OK button -->
-    <LinearLayout android:id="@+id/ok_panel"
+    <RelativeLayout 
+        android:id="@+id/main"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="@color/app_background">
+        
+        <!-- Button bar with OK button -->
+        <LinearLayout
+            android:id="@+id/ok_panel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:orientation="vertical"
             android:divider="?android:attr/dividerHorizontal"
-            android:showDividers="beginning"
-            android:paddingTop="16dip">
+            android:orientation="vertical"
+            android:paddingTop="16dip"
+            android:showDividers="beginning" >
 
-        <LinearLayout
+            <LinearLayout
                 style="?android:attr/buttonBarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:measureWithLargestChild="true">
+                android:measureWithLargestChild="true"
+                android:orientation="horizontal" >
 
-            <LinearLayout android:id="@+id/leftSpacer"
-                    android:layout_weight="0.5"
+                <LinearLayout
+                    android:id="@+id/leftSpacer"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
                     android:orientation="horizontal"
                     android:visibility="gone" />
 
-            <Button android:id="@+id/ok_button"
+                <Button
+                    android:id="@+id/ok_button"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
-                    android:text="@string/ok"
                     android:maxLines="2"
-                    style="?android:attr/buttonBarButtonStyle" />
+                    android:text="@string/ok" />
 
-            <LinearLayout android:id="@+id/rightSpacer"
+                <LinearLayout
+                    android:id="@+id/rightSpacer"
                     android:layout_width="0dip"
-                    android:layout_weight="0.5"
                     android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
                     android:orientation="horizontal"
                     android:visibility="gone" />
-
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <include
-            layout="@layout/app_details"
+        <include
             android:id="@+id/app_snippet"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_alignParentTop="true" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            layout="@layout/app_details" />
 
-    <LinearLayout
+        <LinearLayout
             android:id="@+id/uninstall_holder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/ok_panel"
             android:layout_below="@id/app_snippet"
-            android:orientation="vertical">
-                
-        <ScrollView
+            android:orientation="vertical" >
+
+            <ScrollView
                 android:id="@+id/uninstalling_scrollview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:paddingStart="24dip"
-                android:paddingEnd="24dip"
-                android:paddingTop="8dip"
+                android:fillViewport="false"
                 android:paddingBottom="8dip"
-                android:fillViewport="false">
-                
-            <TextView
+                android:paddingEnd="24dip"
+                android:paddingStart="24dip"
+                android:paddingTop="8dip" >
+
+                <TextView
                     android:id="@+id/center_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="start"
                     android:text="@string/uninstalling"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
-        </ScrollView>
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </ScrollView>
 
-        <Button android:id="@+id/device_manager_button"
+            <Button
+                android:id="@+id/device_manager_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:visibility="gone"
                 android:maxLines="2"
-                android:text="@string/manage_device_administrators" />
-                
-    </LinearLayout>
+                android:text="@string/manage_device_administrators"
+                android:visibility="gone" />
+        </LinearLayout>
+        
+    </RelativeLayout>
 
 </RelativeLayout>
