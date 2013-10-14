@@ -51,6 +51,7 @@ public class UninstallAppProgress extends Activity implements OnClickListener {
     private Button mDeviceManagerButton;
     private ProgressBar mProgressBar;
     private View mOkPanel;
+    private boolean isQuickMode;
     private volatile int mResultCode = -1;
     private final int UNINSTALL_COMPLETE = 1;
     public final static int SUCCEEDED=1;
@@ -112,6 +113,7 @@ public class UninstallAppProgress extends Activity implements OnClickListener {
         Intent intent = getIntent();
         mAppInfo = intent.getParcelableExtra(PackageUtil.INTENT_ATTR_APPLICATION_INFO);
         mAllUsers = intent.getBooleanExtra(Intent.EXTRA_UNINSTALL_ALL_USERS, false);
+        isQuickMode = intent.getBooleanExtra(PackageUtil.INTENT_ATTR_IS_QUICK_MODE_ENABLED, false);
         initView();
     }
     
@@ -133,7 +135,8 @@ public class UninstallAppProgress extends Activity implements OnClickListener {
         boolean isUpdate = ((mAppInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0);
         setTitle(isUpdate ? R.string.uninstall_update_title : R.string.uninstall_application_title);
 
-        setContentView(R.layout.uninstall_progress);
+        setContentView(isQuickMode ? R.layout.uninstall_progress_quick
+                : R.layout.uninstall_progress);
         // Initialize views
         View snippetView = findViewById(R.id.app_snippet);
         PackageUtil.initSnippetForInstalledApp(this, mAppInfo, snippetView);

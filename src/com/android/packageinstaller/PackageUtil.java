@@ -40,10 +40,12 @@ import java.util.List;
 public class PackageUtil {
     public static final String PREFIX="com.android.packageinstaller.";
     public static final String INTENT_ATTR_INSTALL_STATUS = PREFIX+"installStatus";
-    public static final String INTENT_ATTR_APPLICATION_INFO=PREFIX+"applicationInfo";
-    public static final String INTENT_ATTR_PERMISSIONS_LIST=PREFIX+"PermissionsList";
+    public static final String INTENT_ATTR_APPLICATION_INFO = PREFIX+"applicationInfo";
+    public static final String INTENT_ATTR_PERMISSIONS_LIST = PREFIX+"PermissionsList";
     //intent attribute strings related to uninstall
-    public static final String INTENT_ATTR_PACKAGE_NAME=PREFIX+"PackageName";
+    public static final String INTENT_ATTR_PACKAGE_NAME = PREFIX+"PackageName";
+    public static final String INTENT_ATTR_IS_QUICK_MODE_ENABLED = "isQuickMode";
+    public static final String QUICK_MODE_ENABLED = "package_installer_quick_mode_enabled";
 
     /**
      * Utility method to get application information for a given {@link File}

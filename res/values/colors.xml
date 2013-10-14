@@ -17,5 +17,7 @@
 <resources>
     <color name="shadow">#cc222222</color>
     <color name="transparent">#00000000</color>
+    <color name="semi_transparent">#60000000</color>
+    <color name="app_background">#ff000000</color>
 </resources>
 

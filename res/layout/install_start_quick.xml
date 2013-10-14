@@ -17,22 +17,30 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-    android:background="@color/app_background">
+    android:layout_height="match_parent"
+    style="@style/QuickModeWindow" >
 
-    <include
-        layout="@layout/app_details"
+    <RelativeLayout 
+        android:id="@+id/main"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/app_snippet"/>
+        android:background="@color/app_background">
+        
+        <include
+        	layout="@layout/app_details"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:id="@+id/app_snippet"/>
 
-    <include
-        layout="@layout/install_confirm"
-        android:id="@+id/install_confirm_panel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/app_snippet"
-        android:layout_alignParentBottom="true"/>
+    	<include
+        	layout="@layout/install_confirm"
+        	android:id="@+id/install_confirm_panel"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_below="@id/app_snippet"
+        	android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+    
 </RelativeLayout>
 
 

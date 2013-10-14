@@ -85,6 +85,7 @@ public class PackageInstallerActivity extends Activity implements OnCancelListen
     private Button mCancel;
     CaffeinatedScrollView mScrollView = null;
     private boolean mOkCanInstall = false;
+    private boolean isQuickMode = false;
 
     static final String PREFS_ALLOWED_SOURCES = "allowed_sources";
 
@@ -378,6 +379,8 @@ public class PackageInstallerActivity extends Activity implements OnCancelListen
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        isQuickMode = Settings.System.getInt(getContentResolver(), PackageUtil.QUICK_MODE_ENABLED,
+                0) == 1;
         // get intent information
         final Intent intent = getIntent();
         mPackageURI = intent.getData();
@@ -427,7 +430,7 @@ public class PackageInstallerActivity extends Activity implements OnCancelListen
         }
         
         //set view
-        setContentView(R.layout.install_start);
+        setContentView(isQuickMode ? R.layout.install_start_quick : R.layout.install_start);
         mInstallConfirm = findViewById(R.id.install_confirm_panel);
         mInstallConfirm.setVisibility(View.INVISIBLE);
         PackageUtil.initSnippetForNewApp(this, as, R.id.app_snippet);
@@ -557,6 +560,7 @@ public class PackageInstallerActivity extends Activity implements OnCancelListen
                 Intent newIntent = new Intent();
                 newIntent.putExtra(PackageUtil.INTENT_ATTR_APPLICATION_INFO,
                         mPkgInfo.applicationInfo);
+                newIntent.putExtra(PackageUtil.INTENT_ATTR_IS_QUICK_MODE_ENABLED, isQuickMode);
                 newIntent.setData(mPackageURI);
                 newIntent.setClass(this, InstallAppProgress.class);
                 newIntent.putExtra(InstallAppProgress.EXTRA_MANIFEST_DIGEST, mPkgDigest);

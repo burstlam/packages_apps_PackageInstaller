@@ -32,6 +32,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.UserManager;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -100,10 +101,14 @@ public class UninstallerActivity extends Activity implements OnClickListener,
     }
 
     private void startUninstallProgress() {
+        boolean isQuickMode = Settings.System.getInt(getContentResolver(),
+                PackageUtil.QUICK_MODE_ENABLED,
+                0) == 1;
         Intent newIntent = new Intent(Intent.ACTION_VIEW);
         newIntent.putExtra(PackageUtil.INTENT_ATTR_APPLICATION_INFO, 
                                                   mAppInfo);
         newIntent.putExtra(Intent.EXTRA_UNINSTALL_ALL_USERS, mAllUsers);
+        newIntent.putExtra(PackageUtil.INTENT_ATTR_IS_QUICK_MODE_ENABLED, isQuickMode);
         if (getIntent().getBooleanExtra(Intent.EXTRA_RETURN_RESULT, false)) {
             newIntent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
             newIntent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);

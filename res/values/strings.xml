@@ -153,5 +153,8 @@
     <string name="not_available">not available</string>
     <string name="grant_confirm_question">Do you want to grant the following permissions?
         It will get access to:</string>
+        
+    <string name="quick_mode_installing">Installing <xliff:g id="app_name">%1$s</xliff:g></string>
+    <string name="quick_mode_installed">Application Installed</string>
 
 </resources>
